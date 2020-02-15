@@ -110,6 +110,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
+        if (menuItem.getItemId() == R.id.action_fb) {
+            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
+        } else if (menuItem.getItemId() == R.id.action_google) {
+            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
+        } else if (menuItem.getItemId() == R.id.action_about) {
+            ActivityUtils.getInstance().invokeActivity(mActivity, AboutActivity.class, false);
+        } else if (menuItem.getItemId() == R.id.action_exit) {
+            finish();
+        }
 
         return false;
     }
@@ -120,15 +129,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (id == android.R.id.home) {
             drawerLayout.openDrawer(GravityCompat.START);
         }
-        if (id == R.id.action_fb) {
-            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_google) {
-            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_about) {
-            ActivityUtils.getInstance().invokeActivity(mActivity, AboutActivity.class, false);
-        } else if (id == R.id.action_exit) {
 
-        }
         return false;
     }
 
