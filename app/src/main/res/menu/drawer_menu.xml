@@ -8,6 +8,18 @@
             android:id="@+id/action_home"
             android:title="Home" />
     </group>
+    <group
+        android:id="@+id/ax">
+        <item
+            android:id="@+id/action_about"
+            android:title="About" />
+    </group>
+    <group
+        android:id="@+id/axc">
+        <item
+            android:id="@+id/action_exit"
+            android:title="Exit" />
+    </group>
 
     <group
         android:id="@+id/ay">
