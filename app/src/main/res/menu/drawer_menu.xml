@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/a">
+        <item
+            android:id="@+id/action_home"
+            android:title="Home" />
+    </group>
+
+    <group
+        android:id="@+id/ay">
+        <item
+            android:id="@+id/action_fb"
+            android:title="Try Facebook Login" />
+    </group>
+
+    <group
+        android:id="@+id/ba">
+        <item
+            android:id="@+id/action_google"
+            android:title="Try Google Login" />
+    </group>
+
+
+
+</menu>
