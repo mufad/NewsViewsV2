@@ -3,6 +3,7 @@ package com.mufadmonwar.newsviewsv2.network;
 public class HttpParams {
 
     public static final String NEWS_BASE_URL = "https://newsapi.org/v2/";
+    public static final String NUMBERS_BASE_URL = "http://numbersapi.com/";
 
     public static final String API_SOURCES="sources";
     public static final String API_HEADLINES="top-headlines";

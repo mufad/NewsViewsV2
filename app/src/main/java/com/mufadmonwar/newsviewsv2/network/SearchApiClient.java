@@ -1,13 +1,10 @@
 package com.mufadmonwar.newsviewsv2.network;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class SearchApiClient {
 
@@ -24,14 +21,10 @@ public class SearchApiClient {
                     .addInterceptor(new ApiLogger())
                     .build();
 
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-
             retrofit = new Retrofit.Builder()
-                    .baseUrl(HttpParams.NEWS_BASE_URL)
+                    .baseUrl(HttpParams.NUMBERS_BASE_URL)
                     .client(okHttpClient)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
         }
         return retrofit.create(ApiInterface.class);

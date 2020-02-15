@@ -1,23 +1,25 @@
 package com.mufadmonwar.newsviewsv2.activities;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.mufadmonwar.newsviewsv2.BuildConfig;
@@ -29,6 +31,7 @@ import com.mufadmonwar.newsviewsv2.model.headlines.TopNewsResponse;
 import com.mufadmonwar.newsviewsv2.model.news_source.NewsSourcesResponse;
 import com.mufadmonwar.newsviewsv2.model.news_source.Source;
 import com.mufadmonwar.newsviewsv2.network.NewsApiClient;
+import com.mufadmonwar.newsviewsv2.utils.AppConstants;
 
 import java.util.ArrayList;
 
@@ -36,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -52,7 +55,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private TopHeadlineAdapter topHeadlineAdapter;
     private ArrayList<Source> sourceArrayList;
 
-    private ArrayList<Article>articleArrayList;
+    private ArrayList<Article> articleArrayList;
 
 
     @Override
@@ -63,11 +66,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         initFunctionality();
         loadData();
     }
+
     private void initVars() {
         mActivity = MainActivity.this;
         mContext = mActivity.getApplicationContext();
-        sourceArrayList=new ArrayList<>();
-        articleArrayList=new ArrayList<>();
+        sourceArrayList = new ArrayList<>();
+        articleArrayList = new ArrayList<>();
     }
 
     private void initViews() {
@@ -75,8 +79,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         drawerLayout = findViewById(R.id.drawer_layout_lawyer);
         navigationView = findViewById(R.id.navigation_view);
-        rvSources=findViewById(R.id.rv_sources);
-        rvHeadlines=findViewById(R.id.rv_headline);
+        rvSources = findViewById(R.id.rv_sources);
+        rvHeadlines = findViewById(R.id.rv_headline);
         initToolbar();
         enableBackButton();
 
@@ -112,13 +116,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadData(){
+    private void loadData() {
         NewsApiClient.getClient().getNewsSources("en", "us",
                 BuildConfig.ApiKey).enqueue(new Callback<NewsSourcesResponse>() {
             @Override
             public void onResponse(Call<NewsSourcesResponse> call, Response<NewsSourcesResponse> response) {
-                if (response.isSuccessful()){
-                    Log.d("TAG", response.body().getSources().size()+"");
+                if (response.isSuccessful()) {
+                    Log.d("TAG", response.body().getSources().size() + "");
                     sourceArrayList.clear();
                     sourceArrayList.addAll(response.body().getSources());
                     newsSourcesAdapter.notifyDataSetChanged();
@@ -137,8 +141,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 BuildConfig.ApiKey).enqueue(new Callback<TopNewsResponse>() {
             @Override
             public void onResponse(Call<TopNewsResponse> call, Response<TopNewsResponse> response) {
-                if (response.isSuccessful()){
-                    Log.d("TAG", response.body().getArticles().size()+"");
+                if (response.isSuccessful()) {
+                    Log.d("TAG", response.body().getArticles().size() + "");
 
                     articleArrayList.clear();
                     articleArrayList.addAll(response.body().getArticles());
@@ -155,15 +159,43 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         });
     }
 
-    private void initFunctionality(){
+    private void initFunctionality() {
 
-        newsSourcesAdapter=new NewsSourcesAdapter(mContext, sourceArrayList);
+        newsSourcesAdapter = new NewsSourcesAdapter(mContext, sourceArrayList);
         rvSources.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
         rvSources.setAdapter(newsSourcesAdapter);
 
         topHeadlineAdapter = new TopHeadlineAdapter(mContext, articleArrayList);
         rvHeadlines.setLayoutManager(new GridLayoutManager(mContext, 2));
         rvHeadlines.setAdapter(topHeadlineAdapter);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("Search for number");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchView.clearFocus();
+                Intent intent = new Intent(mActivity, SearchNumbersActivity.class);
+                intent.putExtra(AppConstants.INTENT_KEY_QUERY, query);
+                startActivity(intent);
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
 
     }
 }

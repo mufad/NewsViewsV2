@@ -6,6 +6,7 @@ import com.mufadmonwar.newsviewsv2.model.news_source.NewsSourcesResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -19,4 +20,7 @@ public interface ApiInterface {
     @GET(HttpParams.API_HEADLINES)
     Call<TopNewsResponse>getTopNews(@Query(HttpParams.PARAM_SOURCES) String source,
                                     @Query(HttpParams.PARAM_API_KEY) String apiKey);
+
+    @GET("{number}")
+    Call<String>getNumberInfo(@Path("number")String number);
 }
