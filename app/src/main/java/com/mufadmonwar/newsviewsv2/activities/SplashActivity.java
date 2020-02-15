@@ -1,12 +1,12 @@
 package com.mufadmonwar.newsviewsv2.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mufadmonwar.newsviewsv2.R;
 import com.mufadmonwar.newsviewsv2.preferences.AppPreference;

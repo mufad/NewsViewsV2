@@ -23,4 +23,8 @@ public interface ApiInterface {
 
     @GET("{number}")
     Call<String>getNumberInfo(@Path("number")String number);
+
+
+    @GET("{date}/date")
+    Call<String>getDateInfo(@Path("date")String date);
 }

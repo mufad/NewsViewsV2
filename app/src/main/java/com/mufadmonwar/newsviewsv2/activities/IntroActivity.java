@@ -1,14 +1,13 @@
 package com.mufadmonwar.newsviewsv2.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.google.android.material.tabs.TabLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.mufadmonwar.newsviewsv2.R;
 import com.mufadmonwar.newsviewsv2.adapter.PageAdapter;
 

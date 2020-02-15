@@ -2,17 +2,14 @@ package com.mufadmonwar.newsviewsv2.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import androidx.fragment.app.Fragment;
+
 import com.mufadmonwar.newsviewsv2.R;
-import com.mufadmonwar.newsviewsv2.utils.AppConstants;
 
 
 public class MyInfoFragment extends Fragment {

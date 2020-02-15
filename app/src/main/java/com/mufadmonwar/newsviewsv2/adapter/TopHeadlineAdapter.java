@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.mufadmonwar.newsviewsv2.R;
 import com.mufadmonwar.newsviewsv2.listeners.ItemClickListener;
 import com.mufadmonwar.newsviewsv2.model.headlines.Article;
-import com.mufadmonwar.newsviewsv2.model.news_source.Source;
 
 import java.util.ArrayList;
 
