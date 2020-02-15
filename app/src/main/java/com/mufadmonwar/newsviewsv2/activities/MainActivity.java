@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -26,11 +27,13 @@ import com.mufadmonwar.newsviewsv2.BuildConfig;
 import com.mufadmonwar.newsviewsv2.R;
 import com.mufadmonwar.newsviewsv2.adapter.NewsSourcesAdapter;
 import com.mufadmonwar.newsviewsv2.adapter.TopHeadlineAdapter;
+import com.mufadmonwar.newsviewsv2.listeners.ItemClickListener;
 import com.mufadmonwar.newsviewsv2.model.headlines.Article;
 import com.mufadmonwar.newsviewsv2.model.headlines.TopNewsResponse;
 import com.mufadmonwar.newsviewsv2.model.news_source.NewsSourcesResponse;
 import com.mufadmonwar.newsviewsv2.model.news_source.Source;
 import com.mufadmonwar.newsviewsv2.network.NewsApiClient;
+import com.mufadmonwar.newsviewsv2.utils.ActivityUtils;
 import com.mufadmonwar.newsviewsv2.utils.AppConstants;
 
 import java.util.ArrayList;
@@ -57,6 +60,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private ArrayList<Article> articleArrayList;
 
+    private ProgressBar pbLoader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         initViews();
         initFunctionality();
         loadData();
+        initListeners();
     }
 
     private void initVars() {
@@ -81,6 +87,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         navigationView = findViewById(R.id.navigation_view);
         rvSources = findViewById(R.id.rv_sources);
         rvHeadlines = findViewById(R.id.rv_headline);
+        pbLoader = findViewById(R.id.pb_loader);
         initToolbar();
         enableBackButton();
 
@@ -113,7 +120,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (id == android.R.id.home) {
             drawerLayout.openDrawer(GravityCompat.START);
         }
-        return super.onOptionsItemSelected(item);
+        if (id == R.id.action_fb) {
+            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_google) {
+            Toast.makeText(mActivity, "Feature Under Development", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_about) {
+            ActivityUtils.getInstance().invokeActivity(mActivity, AboutActivity.class, false);
+        } else if (id == R.id.action_exit) {
+
+        }
+        return false;
     }
 
     private void loadData() {
@@ -143,6 +159,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             public void onResponse(Call<TopNewsResponse> call, Response<TopNewsResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d("TAG", response.body().getArticles().size() + "");
+                    pbLoader.setVisibility(View.GONE);
 
                     articleArrayList.clear();
                     articleArrayList.addAll(response.body().getArticles());
@@ -197,5 +214,46 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         });
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    private void loadNewsFromSource(String source) {
+
+        NewsApiClient.getClient().getTopNews(source, BuildConfig.ApiKey).enqueue(new Callback<TopNewsResponse>() {
+            @Override
+            public void onResponse(Call<TopNewsResponse> call, Response<TopNewsResponse> response) {
+                if (response.isSuccessful()) {
+                    pbLoader.setVisibility(View.GONE);
+
+                    articleArrayList.clear();
+                    articleArrayList.addAll(response.body().getArticles());
+                    topHeadlineAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TopNewsResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void initListeners() {
+        newsSourcesAdapter.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                pbLoader.setVisibility(View.VISIBLE);
+                loadNewsFromSource(sourceArrayList.get(position).getId());
+            }
+        });
+
+        topHeadlineAdapter.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(mActivity, NewsDetailsActivity.class);
+                intent.putExtra(AppConstants.INTENT_KEY_ARTICLE, articleArrayList.get(position));
+                startActivity(intent);
+            }
+        });
     }
 }

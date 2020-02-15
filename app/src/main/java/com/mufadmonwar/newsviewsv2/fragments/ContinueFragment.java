@@ -42,7 +42,6 @@ public class ContinueFragment extends Fragment {
         ivNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Continue", Toast.LENGTH_SHORT).show();
                 AppPreference.getInstance(getContext()).setBoolean(PrefKey.DONE, true);
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();

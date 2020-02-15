@@ -4,7 +4,9 @@ package com.mufadmonwar.newsviewsv2.model.headlines;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+import java.io.Serializable;
+
+public class Article implements Serializable {
 
     @SerializedName("source")
     @Expose

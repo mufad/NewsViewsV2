@@ -9,4 +9,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="search">Search Numbers</string>
+    <string name="web">Webview</string>
+    <string name="about_details">This app uses two different APIs to show its data for two different features. Homepage shows a list of news sources . You can select a single source and get headlines from that one. You can also search a number of your choice to get facts and trivia about that number.</string>
+    <string name="about_title">About</string>
 </resources>

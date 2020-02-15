@@ -44,7 +44,7 @@ public class TopHeadlineAdapter extends RecyclerView.Adapter<TopHeadlineAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTitle.setText(arrayList.get(position).getTitle());
-        Glide.with(context).load(arrayList.get(position).getUrlToImage()).into(holder.ivNewsThumb);
+        Glide.with(context).load(arrayList.get(position).getUrlToImage()).placeholder(R.color.grey_light).into(holder.ivNewsThumb);
 
     }
 
