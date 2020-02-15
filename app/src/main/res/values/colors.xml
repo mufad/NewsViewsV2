@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimaryDark">#e9e9e9</color>
+    <color name="colorAccent">#11b8ff</color>
+    <color name="colorPrimaryLight">#FF6E40</color>
+
+    <color name="menuTextColor">#48575f</color>
+    <color name="defaultTextColor">#56646b</color>
+    <color name="emailButtonBG">#fb3d2d</color>
+    <color name="mobileButtonBG">#ff5c1d</color>
+    <color name="buttonBGTransparent">#30ff5d15</color>
+    <color name="colorButtonBG">#43A047</color>
+    <!--Common colors-->
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#34439B</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="redHover">#f74747</color>
+    <color name="green">#008000</color>
+    <color name="txtBlkColor">#3f3f3f</color>
+    <color name="transparent50black">#CC000000</color>
+    <color name="transparent10black">#1A000000</color>
+    <color name="transparent50White">#88AAAAAA</color>
+    <color name="fullTransparent">#00000000</color>
+    <color name="btn_back_light">#959699</color>
+    <color name="btn_back_dark">#6F7073</color>
+    <color name="grey_light">#D3D3D3</color>
+    <color name="list_background_color">#F5F2F4</color>
+
+    <color name="shadowColor">#22000000</color>
+    <!--Common colors with specific name-->
+    <color name="badge_color">#43C34D</color>
+    <color name="cart_color">#7182B7</color>
+    <color name="search_list_item_back">#f7f5f5</color>
+    <color name="product_name_color">#556eaf</color>
+    <color name="order_number_color">#00be59</color>
+    <color name="ratting_number_color">#7f7f7f</color>
+    <color name="colorSelectedItem">#77000000</color>
+    <color name="favourite_list_bg_color">#f7f5f5</color>
+
+    <!--Home page-->
+    <color name="homeBackground">#EDEDED</color>
+
+    <color name="transparentBlack">#77000000</color>
+
+    <color name="gray">#B0BEC5</color>
+
+    <!--<color name="imgPlaceholder">#dfdfdf</color>-->
+    <color name="imgPlaceholder">#ffffff</color>
+
+    <color name="line">#D5D8E1</color>
+
+    <color name="placeholder">#acacac</color>
+    <!--<color name="page_bg">#EBEBEC</color>-->
+    <color name="page_bg">#F7F5F6</color>
+    <color name="page_bg_dim">#FAFAFA</color>
+    <color name="url_text">#4285F4</color>
+    <color name="button_color">#FF4747</color>
+    <color name="title_color">#5C6CA8</color>
+    <color name="color_violet">#893af5</color>
+    <color name="color_yellow">#fac92f</color>
+    <color name="color_gold">#eebb1b</color>
+    <color name="title_color_deep">#3c4e94</color>
+    <color name="title_color_welcome">#57B4DD</color>
+    <color name="price_color">#0AC768</color>
+    <color name="toolbar_boarder">#e5e6ea</color>
+    <color name="boarder">#cbd0e1</color>
+    <color name="hint_color">#C1C7DE</color>
+
+    <color name="search_attr">#7E82ED</color>
+    <color name="rating_text">#ED8A19</color>
+
+    <color name="fab">#442196F3</color>
+    <color name="btn_email">#FF6A88</color>
+    <color name="btn_email_hover">#fd7e97</color>
+    <color name="accKitPrimary">#cccccc</color>
+    <color name="accKitPrimaryDark">#775C6CA8</color>
+
+    <color name="btnMain">#6A9AE6</color>
+    <color name="btnMainHover">#79a8f2</color>
+
+    <color name="colorCompleted">#7ABA01</color>
+    <color name="colorPending">#FF5600</color>
+    <color name="colorProcessing">#ED8A19</color>
+
+    <color name="detailsToolbar">#55000000</color>
+    <color name="counterBoarder">#C7CFF6</color>
+
+    <color name="detailsBoarder">#D5D8E1</color>
+
+    <color name="textColor">#9B53FE</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="light_orange">#FFAB40</color>
+    <color name="white_opacity">#7feeeeee</color>
+
+    <color name="blue_title">#5995ff</color>
+    <color name="red_title">#ff5778</color>
+    <color name="yellow_title">#ff990b</color>
+    <color name="orange_title">#ff5c1d</color>
+
+    <color name="status_ongoing">#60D364</color>
+    <color name="status_ongoing_light">#5960D364</color>
+    <color name="status_pending">#EBCC63</color>
+    <color name="status_pending_light">#59F1D36E</color>
+    <color name="status_rejected">#EC5E52</color>
+    <color name="status_rejected_light">#59EC5E52</color>
+
+    <color name="training_title_bg">#D3E5E6EA</color>
+    <color name="layout_bg">#f7f7f7</color>
+    <color name="button_bg">#044bb3</color>
+
+    <color name="lawyer_dashboard_bg">#E0C5C5</color>
+
+
+    <color name="appColor">#09BB52</color>
+    <color name="appColor2">#E11B22</color>
+
+    <color name="chatbg">#388E3C</color>
+
+    <color name="lawyer_btn_bg">#294BB3</color>
+    <color name="user_btn_bg">#F32C24</color>
+
+
+
+
 </resources>

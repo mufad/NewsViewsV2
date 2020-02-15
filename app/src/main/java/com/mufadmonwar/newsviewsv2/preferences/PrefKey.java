@@ -4,7 +4,7 @@ public class PrefKey {
 
     public static final String APP_PREFERENCE = "newsviews";
 
-    public static final String IS_SKIP = "skip";
+    public static final String DONE = "done";
 
 
 }

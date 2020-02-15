@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NewsViewsV2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_me">Hello, I\'m Monwar Jahan, and welcome to my rendition of the News Views App. Swipe Left to explore more of this app</string>
+    <string name="more">Let\'s Explore More Of This App</string>
 </resources>

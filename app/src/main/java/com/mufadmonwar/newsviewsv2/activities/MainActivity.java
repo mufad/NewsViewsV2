@@ -1,4 +1,4 @@
-package com.mufadmonwar.newsviewsv2.views;
+package com.mufadmonwar.newsviewsv2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
